@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Student Info</h3>
+
+  <p><strong>Surname: </strong>{{student.family_name}}</p>
+  <p><strong>Name: </strong>{{student.given_name}}</p>
+  <p><strong>Gender: </strong>{{student.gender}}</p>
+  <p><strong>Email: </strong>{{student.email}}</p>
+  <p><strong>Checkout Books: </strong>{{student.checkouts.length}}</p>
+  <p><strong>Return Books: </strong>{{student.returnCount}}</p>
+
+  <table class="table table-bordered table-hover" *ngIf="books.length">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Checkout date</th>
+        <th>Return date</th>
+        <th>Valid until</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" (click)="bookInfo(book.id)">
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.checkout_date}}</td>
+        <td>{{book.return_date}}</td>
+        <td>{{book.valid_until}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-secondary btn-sm m-2" (click)="goBack()">Students List</button>
+  <button class="btn btn-secondary btn-sm m-2" (click)="editStudent()">Edit Student</button>
+  <button 
+    class="btn btn-secondary btn-sm m-2" 
+    *ngIf="student.checkouts.length===student.returnCount" 
+    (click)="deleteStudent()">Delete Student</button>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger mt-4">{{errorMessage}}</div>
+</div>

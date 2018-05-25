@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Search Books</h3>
+  
+  <form>
+    <div class="form-group">
+      <label for="bookSearchExp">Search:</label>
+      <input class="form-control" id="bookSearchExp" type="text" name="bookSearchExp"
+        [(ngModel)]="bookSearchExp" (change)="onValueChange()">
+    </div>
+  </form>
+
+  <h3 class="text-center mt-2 mb-2">List of Matched Books</h3>
+  <table class="table table-bordered table-hover"  *ngIf="books.length">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Release date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" (click)="bookInfo(book.id)">
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.publisher}}</td>
+        <td>{{book.release_date}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
+</div>

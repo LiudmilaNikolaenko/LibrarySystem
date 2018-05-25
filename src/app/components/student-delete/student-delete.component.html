@@ -1,0 +1,15 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Delete Student</h3>
+
+  <h5>You are going to delete the following student:</h5>
+
+  <p><strong>Surname: </strong>{{student.family_name}}</p>
+  <p><strong>Name: </strong>{{student.given_name}}</p>
+  <p><strong>Gender: </strong>{{student.gender}}</p>
+  <p><strong>Email: </strong>{{student.email}}</p>
+ 
+  <button class="btn btn-secondary btn-sm m-2" (click)="goBack()">Cancel</button>
+  <button class="btn btn-secondary btn-sm m-2" (click)="deleteStudent()">Delete</button>
+
+  <div *ngIf="errorMessage" class="danger">{{errorMessage}}</div>
+</div>

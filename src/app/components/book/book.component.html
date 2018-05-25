@@ -1,0 +1,22 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Book Info</h3>
+
+  <p><strong>Author: </strong>{{book.author}}</p>
+  <p><strong>Title: </strong>{{book.title}}</p>
+  <p><strong>Language: </strong>{{book.language}}</p>
+  <p><strong>Publisher: </strong>{{book.publisher}}</p>
+  <p><strong>Release date: </strong>{{book.release_date}}</p>
+  <p><strong>ISBN: </strong>{{book.isbn}}</p>
+  <p><strong>Pages: </strong>{{book.pages_count}}</p>
+  <p><strong>Count: </strong>{{book.count}}</p>
+  <p><strong>Actual count: </strong>{{book.actual_count}}</p>
+
+  <button class="btn btn-secondary btn-sm m-2" (click)="goBack()">Books List</button>
+  <button class="btn btn-secondary btn-sm m-2" (click)="editBook()">Edit Book</button>
+  <button 
+    class="btn btn-secondary btn-sm m-2" 
+    *ngIf="book.count===book.actual_count"  
+    (click)="deleteBook()">Delete Book</button>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger mt-4">{{errorMessage}}</div>
+</div>

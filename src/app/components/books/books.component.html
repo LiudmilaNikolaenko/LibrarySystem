@@ -1,0 +1,27 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Books List</h3>
+
+  <button class="btn btn-secondary btn-sm m-2" (click)="addBook()">Add New Book</button>
+  <button class="btn btn-secondary btn-sm m-2" (click)="searchBooks()">Search Books</button>
+
+  <table class="table table-bordered table-hover" *ngIf="books.length">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Release date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" (click)="bookInfo(book.id)">
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.publisher}}</td>
+        <td>{{book.release_date}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+</div>

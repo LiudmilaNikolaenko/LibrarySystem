@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 class="text-center mt-2 mb-2">Students List</h3>
+
+  <button class="btn btn-secondary btn-sm m-2" (click)="addStudent()">Add New Student</button>
+  
+  <table class="table table-bordered table-hover" *ngIf="students.length">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Checkout Books</th>
+        <th>Return Books</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students" (click)="studentInfo(student.uuid)">
+        <td>{{student.family_name}}</td>
+        <td>{{student.given_name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.checkouts.length}}</td>
+        <td>{{student.returnCount}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="form-wrapper" *ngIf="bookForm">
+  
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  
+      <h3 class="text-center mt-2 mb-2">{{title}}</h3>
+  
+      <div class="form-group">
+        <label for="author">Author: </label>
+        <input class="form-control" id="author" type="text" formControlName="author">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('author' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="title">Title: </label>
+        <input class="form-control" id="title" type="text" formControlName="title">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('title' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="language">Language: </label>
+        <select class="form-control" id="language" formControlName="language">
+            <option value="ENG">English</option>
+            <option value="FRA">French</option>
+            <option value="GER">German</option>
+          </select>
+        <div class="alert alert-danger" 
+          *ngIf="checkError('language' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="publisher">Publisher: </label>
+        <input class="form-control" id="publisher" type="text" formControlName="publisher">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('publisher' ,'required')">Required!</div>
+        </div>
+    
+      <div class="form-group">
+        <label for="release_date">Release date: </label>
+        <input class="form-control" id="release_date" type=number formControlName="release_date">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('release_date' ,'required')">Required!</div>
+        <div class="alert alert-danger" 
+          *ngIf="checkError('release_date' ,'pattern')">The value must be an four-digits number!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="isbn">ISBN: </label>
+        <input class="form-control" id="isbn" type="text" formControlName="isbn">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('isbn' ,'required')">Required!</div>
+        <div class="alert alert-danger" 
+          *ngIf="checkError('isbn' ,'pattern')">The value must be an ten-digits number!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="pages_count">Pages count: </label>
+        <input class="form-control" id="pages_count" type=number formControlName="pages_count">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('pages_count' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="count">Books count: </label>
+        <input class="form-control" id="count" type=number formControlName="count">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('count' ,'required')">Required!</div>
+      </div>
+    
+      <div *ngIf="errorMessage" class="alert alert-danger mt-4 mb-4">{{errorMessage}}</div>
+  
+      <button class="btn btn-secondary btn-sm m-2" (click)="goBack()">Cancel</button>
+      <button type="submit" class="btn btn-secondary btn-sm m-2" [disabled]="bookForm.invalid">Save</button>
+  
+    </form>
+  </div>
+</div>

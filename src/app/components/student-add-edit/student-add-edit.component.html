@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="form-wrapper" *ngIf="studentForm">
+  
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  
+      <h3 class="text-center mt-2 mb-2">{{title}}</h3>
+  
+      <div class="form-group">
+        <label for="family_name">Surname: </label>
+        <input class="form-control" id="family_name" type="text" formControlName="family_name">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('family_name' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="given_name">Name: </label>
+        <input class="form-control" id="given_name" type="text" formControlName="given_name">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('given_name' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="gender">Gender: </label>
+        <select class="form-control" id="gender" formControlName="gender">
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+        </select>
+        <div class="alert alert-danger" 
+          *ngIf="checkError('gender' ,'required')">Required!</div>
+      </div>
+    
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input class="form-control" id="email" type="text" formControlName="email">
+        <div class="alert alert-danger" 
+          *ngIf="checkError('email' ,'required')">Required!</div>
+        <div class="alert alert-danger" 
+          *ngIf="checkError('email' ,'pattern')">Invalid email!</div>
+      </div>
+    
+      <div *ngIf="errorMessage" class="alert alert-danger mt-4 mb-4">{{errorMessage}}</div>
+  
+      <button class="btn btn-secondary btn-sm m-2" (click)="goBack()">Cancel</button>
+      <button type="submit" class="btn btn-secondary btn-sm m-2" [disabled]="studentForm.invalid">Save</button>
+  
+    </form>
+  </div>
+</div>
